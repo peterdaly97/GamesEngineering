@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\peter\desktop\college\gameengineering\practicals\factorypattern\main.cpp(13): warning C4018: '<': signed/unsigned mismatch
+  factoryPattern.vcxproj -> C:\Users\peter\Desktop\College\GameEngineering\Practicals\factoryPattern\Debug\factoryPattern.exe
