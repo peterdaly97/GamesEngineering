@@ -7,6 +7,7 @@
 #include "JumpCommand.h"
 #include "MeeleeCommand.h"
 #include "ShieldCommand.h"
+#include "MacroCommand.h"
 #include <SDL.h>
 
 class InputHandler
@@ -22,6 +23,7 @@ private:
 	Command * buttonA_;
 	Command * buttonB_;
 	Command * buttonZ_;
+	MacroCommand * macro;
 };
 #endif // !INPUTHANDLER_H
 
