@@ -13,9 +13,12 @@ public:
 	virtual void add(Command* command);
 	virtual void remove(Command* command);
 	virtual void Execute();
-
+	void Undo();
+	void Redo();
 private:
 	std::list<Command*> m_commands;
+	Command* m_undoCommand;
+	bool m_undo;
 };
 #endif // !MACROCOMMAND_H
 

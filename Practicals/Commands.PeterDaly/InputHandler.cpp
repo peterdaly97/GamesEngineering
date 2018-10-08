@@ -45,6 +45,12 @@ void InputHandler::handleInput(SDL_Event & event)
 		case SDLK_1:
 			macro->Execute();
 			break;
+		case SDLK_2:
+			macro->Undo();
+			break;
+		case SDLK_3:
+			macro->Redo();
+			break;
 		}
 	}
 }
