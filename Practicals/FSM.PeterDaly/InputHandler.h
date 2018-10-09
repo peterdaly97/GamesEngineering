@@ -9,7 +9,7 @@ class InputHandler
 public:
 	InputHandler();
 	~InputHandler();
-	void handleInput(SDL_Event & event);
+	void handleInput(SDL_Event & event, SDL_Rect * rect);
 
 private:
 	Animation * animationState;

@@ -10,7 +10,7 @@ InputHandler::~InputHandler()
 	
 }
 
-void InputHandler::handleInput(SDL_Event & event)
+void InputHandler::handleInput(SDL_Event & event, SDL_Rect * rect)
 {
 	switch (event.type)
 	{
@@ -19,12 +19,15 @@ void InputHandler::handleInput(SDL_Event & event)
 		{
 		case SDLK_i:
 			animationState->idle();
+			rect->y = 0;
 			break;
 		case SDLK_j:
 			animationState->jumping();
+			rect->y = 50;
 			break;
 		case SDLK_c:
 			animationState->climbing();
+			rect->y = 100;
 			break;
 		}
 	}
