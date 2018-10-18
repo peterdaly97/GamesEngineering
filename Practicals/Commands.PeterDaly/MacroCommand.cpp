@@ -22,16 +22,15 @@ void MacroCommand::Execute() {
 }
 
 void MacroCommand::Undo() {
-	if (!m_undo && m_commands.size() > 0) {
-		m_undo = true;
-		m_undoCommand = m_commands.back();
+	if (m_commands.size() > 0) {
+		m_undoCommands.push_back(m_commands.back());
 		m_commands.pop_back();
 	}
 }
 
 void MacroCommand::Redo() {
-	if (m_undo) {
-		m_undo = false;
-		m_commands.push_back(m_undoCommand);
+	if (m_undoCommands.size() > 0) {
+		m_commands.push_back(m_undoCommands.back());
+		m_undoCommands.pop_back();
 	}
 }

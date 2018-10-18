@@ -17,7 +17,7 @@ public:
 	void Redo();
 private:
 	std::list<Command*> m_commands;
-	Command* m_undoCommand;
+	std::list<Command*> m_undoCommands;
 	bool m_undo;
 };
 #endif // !MACROCOMMAND_H
