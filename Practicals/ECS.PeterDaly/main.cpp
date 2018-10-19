@@ -1,12 +1,8 @@
 #include <iostream>
-#include "HealthComponents.h"
 #include "HealthSystem.h"
 #include "ControlSystem.h"
 #include "RenderSystem.h"
 #include "AISystem.h"
-#include "PositionComponent.h"
-#include "ControlComponent.h"
-#include "AIComponent.h"
 
 
 int main(int argc, char* argv[]) {
@@ -18,12 +14,14 @@ int main(int argc, char* argv[]) {
 	Entity * cat = new Entity();
 
 	player->addComponent(new HealthComponent());
-	player->addComponent(new PositionComponent(100, 100));
+	player->addComponent(new PositionComponent(0, 100));
 	player->addComponent(new ControlComponent());
+	player->addComponent(new GraphicComponent("grid.png", 200, 200));
 
 	alien->addComponent(new HealthComponent());
-	alien->addComponent(new PositionComponent(1200, 800));
+	alien->addComponent(new PositionComponent(250, 100));
 	alien->addComponent(new AIComponent(1));
+	player->addComponent(new GraphicComponent("grid.png", 200, 200));
 
 	dog->addComponent(new HealthComponent());
 	dog->addComponent(new PositionComponent(1200, 100));
@@ -45,8 +43,8 @@ int main(int argc, char* argv[]) {
 	RenderSystem rs;
 	rs.addEntity(player);
 	rs.addEntity(alien);
-	rs.addEntity(dog);
-	rs.addEntity(cat);
+	//rs.addEntity(dog);
+	//rs.addEntity(cat);
 
 	AISystem as;
 	as.addEntity(alien);

@@ -15,7 +15,7 @@ public:
 		m_entities.push_back(e);
 	}
 	void update() {
-		std::cout << "Updating Health System with " << m_entities.size() << " entities" << std::endl;
+		
 	}
 };
 #endif // !HEALTHSYSTEM_H

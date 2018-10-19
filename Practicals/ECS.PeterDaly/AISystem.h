@@ -15,7 +15,7 @@ public:
 		m_entities.push_back(e);
 	}
 	void update() {
-		std::cout << "Updating AI System with " << m_entities.size() << " entities" << std::endl;
+		
 	}
 };
 #endif // !AISYSTEM_H

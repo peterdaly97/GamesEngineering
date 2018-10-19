@@ -4,6 +4,16 @@ RenderSystem::RenderSystem() {
 	//The surface contained by the window
 	SDL_Surface* screenSurface = NULL;
 
+	sourceRect.x = 0;
+	sourceRect.y = 0;
+	sourceRect.w = 300;
+	sourceRect.h = 300;
+
+	destRect.x = 0;
+	destRect.y = 0;
+	destRect.w = 200;
+	destRect.h = 200;
+
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -53,11 +63,33 @@ void RenderSystem::update() {
 	//Clear screen
 	SDL_RenderClear(Renderer);
 
-	//Render texture to screen
-	SDL_RenderCopy(Renderer, Texture, NULL, NULL);
+	for (Entity * entity : m_entities) {
+		//Render texture to screen
+		std::vector<Component*> comps = entity->getComponents();
+		for (Component * comp : comps) {
 
-	//Update screen
-	SDL_RenderPresent(Renderer);
+			if (comp->getType() == COMPONENTTYPE::POSITION) {
+				PositionComponent * pComp = static_cast<PositionComponent *> (comp);
+				destRect.x = pComp->getX();
+				destRect.y = pComp->getY();
+			}
+
+			if (comp->getType() == COMPONENTTYPE::RENDER) {
+				 GraphicComponent * gComp = static_cast<GraphicComponent *> (comp);
+				 Texture = loadTexture(gComp->getTexturePath());
+				 destRect.w = gComp->getW();
+				 destRect.h = gComp->getH();
+			}
+
+			
+		}
+		SDL_RenderCopy(Renderer, Texture, &sourceRect, &destRect);
+		//Update screen
+		SDL_RenderPresent(Renderer);
+	}
+	
+
+	
 }
 
 SDL_Texture * RenderSystem::loadTexture(std::string path) {

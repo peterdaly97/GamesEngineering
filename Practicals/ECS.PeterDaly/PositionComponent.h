@@ -16,8 +16,12 @@ public:
 	void setX(int x) { this->x = x; }
 	void setY(int y) { this->y = y; }
 
+	COMPONENTTYPE getType() { return type; }
+
 private:
 	int x;
 	int y;
+
+	COMPONENTTYPE type = COMPONENTTYPE::POSITION;
 };
 #endif // !POSITIONCOMPONENT_H

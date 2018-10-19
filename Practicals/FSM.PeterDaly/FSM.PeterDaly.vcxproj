@@ -135,7 +135,6 @@
     <ClInclude Include="Climbing.h" />
     <ClInclude Include="Idle.h" />
     <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="JumpCommand.h" />
     <ClInclude Include="Jumping.h" />
     <ClInclude Include="State.h" />
   </ItemGroup>
