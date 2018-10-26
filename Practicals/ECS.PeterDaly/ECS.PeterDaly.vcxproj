@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AISystem.cpp" />
+    <ClCompile Include="ControlSystem.cpp" />
+    <ClCompile Include="HealthSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
   </ItemGroup>

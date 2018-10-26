@@ -18,16 +18,13 @@ void InputHandler::handleInput(SDL_Event & event, SDL_Rect * rect)
 		switch (event.key.keysym.sym)
 		{
 		case SDLK_i:
-			animationState->idle();
-			rect->y = 0;
+			animationState->execute(rect, "idle");
 			break;
 		case SDLK_j:
-			animationState->jumping();
-			rect->y = 50;
+			animationState->execute(rect, "jumping");
 			break;
 		case SDLK_c:
-			animationState->climbing();
-			rect->y = 100;
+			animationState->execute(rect, "climbing");
 			break;
 		}
 	}

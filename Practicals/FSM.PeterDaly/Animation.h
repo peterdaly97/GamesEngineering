@@ -3,6 +3,9 @@
 
 class State;
 
+#include <SDL.h>
+#include <iostream>
+
 class Animation
 {
 	
@@ -11,9 +14,10 @@ public:
 	~Animation();
 
 	void setCurrent(State* s);
-	void idle();
-	void jumping();
-	void climbing();
+	void execute(SDL_Rect * rect, std::string type);
+	/*void idle(SDL_Rect * rect);
+	void jumping(SDL_Rect * rect);
+	void climbing(SDL_Rect * rect);*/
 
 	State* m_current;
 

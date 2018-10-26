@@ -10,12 +10,8 @@ class ControlSystem
 	std::vector<Entity *> m_entities;
 
 public:
-	ControlSystem() {}
-	void addEntity(Entity * e) {
-		m_entities.push_back(e);
-	}
-	void update() {
-		
-	}
+	ControlSystem();
+	void addEntity(Entity * e);
+	void update();
 };
 #endif // !CONTROLSYSTEM_H

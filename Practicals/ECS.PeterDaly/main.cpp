@@ -24,12 +24,14 @@ int main(int argc, char* argv[]) {
 	player->addComponent(new GraphicComponent("grid.png", 200, 200));
 
 	dog->addComponent(new HealthComponent());
-	dog->addComponent(new PositionComponent(1200, 100));
+	dog->addComponent(new PositionComponent(0, 250));
 	dog->addComponent(new AIComponent(2));
+	dog->addComponent(new GraphicComponent("grid.png", 200, 200));
 
 	cat->addComponent(new HealthComponent());
-	cat->addComponent(new PositionComponent(100, 800));
+	cat->addComponent(new PositionComponent(250, 250));
 	cat->addComponent(new AIComponent(2));
+	cat->addComponent(new GraphicComponent("grid.png", 200, 200));
 	
 	HealthSystem hs;
 	hs.addEntity(player);
@@ -43,8 +45,8 @@ int main(int argc, char* argv[]) {
 	RenderSystem rs;
 	rs.addEntity(player);
 	rs.addEntity(alien);
-	//rs.addEntity(dog);
-	//rs.addEntity(cat);
+	rs.addEntity(dog);
+	rs.addEntity(cat);
 
 	AISystem as;
 	as.addEntity(alien);
@@ -53,11 +55,10 @@ int main(int argc, char* argv[]) {
 
 	while (!quit) {
 		hs.update();
-		cs.update();
 		rs.update();
 		as.update();
 		while (SDL_PollEvent(&event)) {
-			
+			cs.update();
 		}
 	}
 

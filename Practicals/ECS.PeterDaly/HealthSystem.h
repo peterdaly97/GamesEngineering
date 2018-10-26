@@ -10,12 +10,8 @@ class HealthSystem
 	std::vector<Entity *> m_entities;
 
 public:
-	HealthSystem() {}
-	void addEntity(Entity * e) {
-		m_entities.push_back(e);
-	}
-	void update() {
-		
-	}
+	HealthSystem();
+	void addEntity(Entity * e);
+	void update();
 };
 #endif // !HEALTHSYSTEM_H

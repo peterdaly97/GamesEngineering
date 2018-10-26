@@ -75,21 +75,21 @@ void RenderSystem::update() {
 			}
 
 			if (comp->getType() == COMPONENTTYPE::RENDER) {
-				 GraphicComponent * gComp = static_cast<GraphicComponent *> (comp);
-				 Texture = loadTexture(gComp->getTexturePath());
-				 destRect.w = gComp->getW();
-				 destRect.h = gComp->getH();
+				GraphicComponent * gComp = static_cast<GraphicComponent *> (comp);
+				//Texture = loadTexture(gComp->getTexturePath());
+				destRect.w = gComp->getW();
+				destRect.h = gComp->getH();
 			}
 
-			
+
 		}
 		SDL_RenderCopy(Renderer, Texture, &sourceRect, &destRect);
 		//Update screen
 		SDL_RenderPresent(Renderer);
 	}
-	
 
-	
+
+
 }
 
 SDL_Texture * RenderSystem::loadTexture(std::string path) {
