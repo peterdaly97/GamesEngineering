@@ -14,24 +14,24 @@ int main(int argc, char* argv[]) {
 	Entity * cat = new Entity();
 
 	player->addComponent(new HealthComponent());
-	player->addComponent(new PositionComponent(0, 100));
+	player->addComponent(new PositionComponent(300, 100));
 	player->addComponent(new ControlComponent());
-	player->addComponent(new GraphicComponent("grid.png", 200, 200));
+	player->addComponent(new GraphicComponent("human.png", 200, 200));
 
 	alien->addComponent(new HealthComponent());
-	alien->addComponent(new PositionComponent(250, 100));
+	alien->addComponent(new PositionComponent(1250, 100));
 	alien->addComponent(new AIComponent(1));
-	player->addComponent(new GraphicComponent("grid.png", 200, 200));
+	alien->addComponent(new GraphicComponent("alien.png", 200, 200));
 
 	dog->addComponent(new HealthComponent());
-	dog->addComponent(new PositionComponent(0, 250));
+	dog->addComponent(new PositionComponent(300, 650));
 	dog->addComponent(new AIComponent(2));
-	dog->addComponent(new GraphicComponent("grid.png", 200, 200));
+	dog->addComponent(new GraphicComponent("dog.png", 200, 200));
 
 	cat->addComponent(new HealthComponent());
-	cat->addComponent(new PositionComponent(250, 250));
+	cat->addComponent(new PositionComponent(1250, 650));
 	cat->addComponent(new AIComponent(2));
-	cat->addComponent(new GraphicComponent("grid.png", 200, 200));
+	cat->addComponent(new GraphicComponent("cat.jpg", 200, 200));
 	
 	HealthSystem hs;
 	hs.addEntity(player);
