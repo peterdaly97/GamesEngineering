@@ -6,7 +6,7 @@
 class HealthComponent : public Component
 {
 public:
-	HealthComponent() : health(100) {}
+	HealthComponent(int health) : health(health) {}
 
 	int getHealth() { return health; }
 	void setHealth(int health) { this->health = health; }

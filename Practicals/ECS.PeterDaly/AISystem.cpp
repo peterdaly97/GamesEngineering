@@ -21,14 +21,14 @@ void AISystem::update() {
 		std::vector<Component*> comps = entity->getComponents();
 		for (Component * comp : comps) {
 			if (comp->getType() == COMPONENTTYPE::AI) {
-				AIComponent * aiComp = static_cast<AIComponent *>(comp);
+				AIComponent * aiComp = dynamic_cast<AIComponent *>(comp);
 				speed = aiComp->getSpeed();
 				cout << "Getting the speed of entity " << index << endl;
 			}
 
 
 			if (comp->getType() == COMPONENTTYPE::POSITION) {
-				PositionComponent * psComp = static_cast<PositionComponent *>(comp);
+				PositionComponent * psComp = dynamic_cast<PositionComponent *>(comp);
 				x = psComp->getX();
 				y = psComp->getY();
 				psComp->setX(psComp->getX() + speed);
@@ -37,9 +37,7 @@ void AISystem::update() {
 					<< ") to (" << psComp->getX() << ", " << psComp->getY() << ")" << endl;
 			}
 
-
 		}
-		
 
 		index++;
 	}

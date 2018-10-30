@@ -12,65 +12,67 @@ void ControlSystem::update(SDL_Event & e) {
 	
 	cout << "Control SYSTEM:" << endl;
 
-	if (e.type == SDL_KEYDOWN) {
-		int initX = 0;
-		int initY = 0;
-		int x = 0;
-		int y = 0;
+	for (Entity * entity : m_entities) {
+		if (e.type == SDL_KEYDOWN) {
+			int initX = 0;
+			int initY = 0;
+			int x = 0;
+			int y = 0;
 
 
 
-		switch (e.type)
-		{
-		case SDL_KEYDOWN:
-			switch (e.key.keysym.sym)
+			switch (e.type)
 			{
-			case SDLK_UP:
-				y--;
-				cout << "Move Up" << endl;
-				break;
-			case SDLK_DOWN:
-				y++;
-				cout << "Move Down" << endl;
-				break;
-			case SDLK_RIGHT:
-				cout << "Move Right" << endl;
-				x++;
-				break;
-			case SDLK_LEFT:
-				cout << "Move Left" << endl;
-				x--;
-				break;
+			case SDL_KEYDOWN:
+				switch (e.key.keysym.sym)
+				{
+				case SDLK_UP:
+					y--;
+					cout << "Move Up" << endl;
+					break;
+				case SDLK_DOWN:
+					y++;
+					cout << "Move Down" << endl;
+					break;
+				case SDLK_RIGHT:
+					cout << "Move Right" << endl;
+					x++;
+					break;
+				case SDLK_LEFT:
+					cout << "Move Left" << endl;
+					x--;
+					break;
+				}
 			}
-		}
 
 
-		for (Entity * entity : m_entities) {
+			for (Entity * entity : m_entities) {
 
-			//Move AI
-			std::vector<Component*> comps = entity->getComponents();
-			for (Component * comp : comps) {
+				//Move AI
+				std::vector<Component*> comps = entity->getComponents();
+				for (Component * comp : comps) {
 
-				if (comp->getType() == COMPONENTTYPE::POSITION) {
-					PositionComponent * psComp = static_cast<PositionComponent *>(comp);
-					initX = psComp->getX();
-					initY = psComp->getY();
-					psComp->setX(psComp->getX() + x);
-					psComp->setY(psComp->getY() + y);
-					cout << "Changing position of player " << " from (" << initX << ", " << initY
-						<< ") to (" << psComp->getX() << ", " << psComp->getY() << ")" << endl;
+					if (comp->getType() == COMPONENTTYPE::POSITION) {
+						PositionComponent * psComp = dynamic_cast<PositionComponent *>(comp);
+						initX = psComp->getX();
+						initY = psComp->getY();
+						psComp->setX(psComp->getX() + x);
+						psComp->setY(psComp->getY() + y);
+						cout << "Changing position of player " << " from (" << initX << ", " << initY
+							<< ") to (" << psComp->getX() << ", " << psComp->getY() << ")" << endl;
+					}
+
+
 				}
 
 
 			}
-
-
+		}
+		else {
+			cout << "No input from the player" << endl;
 		}
 	}
-	else {
-		cout << "No input from the player" << endl;
-	}
-	
+
 	cout << endl;
 	cout << endl;
 }
