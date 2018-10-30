@@ -8,6 +8,7 @@
 #include "GraphicsComponent.h"
 #include "HealthComponents.h"
 #include "PositionComponent.h"
+#include <SDL.h>
 
 class Entity
 {
