@@ -62,6 +62,10 @@ void ControlSystem::update(SDL_Event & e) {
 							<< ") to (" << psComp->getX() << ", " << psComp->getY() << ")" << endl;
 					}
 
+					if (comp->getType() == COMPONENTTYPE::CONTROL) {
+						cout << "Detecting Input" << endl;
+					}
+
 
 				}
 
@@ -69,7 +73,7 @@ void ControlSystem::update(SDL_Event & e) {
 			}
 		}
 		else {
-			cout << "No input from the player" << endl;
+			cout << "Detecting Input" << endl;
 		}
 	}
 

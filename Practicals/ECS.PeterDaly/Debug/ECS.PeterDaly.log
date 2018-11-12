@@ -1,7 +1,2 @@
-﻿  AISystem.cpp
-  ControlSystem.cpp
-  HealthSystem.cpp
-  RenderSystem.cpp
-  main.cpp
-  Generating Code...
+﻿  ControlSystem.cpp
   ECS.PeterDaly.vcxproj -> C:\Users\gameuser\Desktop\College\Games Engineering\GamesEngineering\Practicals\ECS.PeterDaly\Debug\ECS.PeterDaly.exe
