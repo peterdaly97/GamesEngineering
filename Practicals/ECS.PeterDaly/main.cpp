@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
 
 	player->addComponent(new HealthComponent(10));
 	player->addComponent(new PositionComponent(300, 100));
-	player->addComponent(new ControlComponent());
+	player->addComponent(new AIComponent(2));
 	player->addComponent(new GraphicComponent("human.png", 200, 200));
 
 	alien->addComponent(new HealthComponent(5));
@@ -91,7 +91,8 @@ int main(int argc, char* argv[]) {
 	alien->addComponent(new GraphicComponent("alien.png", 200, 200));
 
 	dog->addComponent(new HealthComponent(4));
-	dog->addComponent(new AIComponent(2));
+	
+	dog->addComponent(new ControlComponent());
 	dog->addComponent(new PositionComponent(300, 650));
 	dog->addComponent(new GraphicComponent("dog.png", 200, 200));
 
@@ -107,7 +108,7 @@ int main(int argc, char* argv[]) {
 	hs.addEntity(cat);
 
 	ControlSystem cs;
-	cs.addEntity(player);
+	cs.addEntity(dog);
 
 	RenderSystem rs;
 	rs.addEntity(player);
@@ -117,7 +118,7 @@ int main(int argc, char* argv[]) {
 
 	AISystem as;
 	as.addEntity(alien);
-	as.addEntity(dog);
+	as.addEntity(player);
 	as.addEntity(cat);
 
 	while (!quit) {
