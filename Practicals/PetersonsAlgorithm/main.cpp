@@ -1,55 +1,51 @@
 #include <thread>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-bool flags[2] = { 
-	false, 
-	false 
-};
-int routine = 1;
+const int PROCESS_AMOUNT = 50;
+
+vector<thread> m_threads;
+int m_in[PROCESS_AMOUNT] = { 0 };
+int m_last[PROCESS_AMOUNT] = { 0 };
 
 
-void routine1() {
+
+void routine(int i) {
 	while (true) {
 
+		for (int j = 0; j < PROCESS_AMOUNT; j++) {
+			m_in[i] = j;
+			m_last[j] = i;
 
-		flags[0] = true;
-		routine = 1;
+			for (int k = 0; k < PROCESS_AMOUNT; k++) {
 
-		// Waits for flag to be updated
-		while (flags[1] && routine == 1) { }
+				if (i != k) {
+					while (m_in[k] >= m_in[i] && m_last[j] == i);
+				}
+				
 
+			}
+		}
+		cout << i << " routine" << endl;
+		m_in[i] = -1;
 		
-		cout << "1rst routine" << endl;
-		flags[0] = false;
-
 	}
 }
-
-void routine2() {
-	while (true) {
-		flags[1] = true;
-		routine = 0;
-
-		// Waits for flag to be updated
-		while (flags[0] && routine == 0) { }
-		
-		
-		cout << "2nd routine" << endl;
-		flags[1] = false;
-	}
-}
-
 
 
 int main()
 {
-	thread thread1(routine1);
-	thread thread2(routine2);
+
+	for (int i = 0; i < PROCESS_AMOUNT; i++) {
+		m_threads.push_back(thread(routine, i));
+		
+	}
 	
-	thread1.join();
-	thread2.join();
+	for (int i = 0; i < PROCESS_AMOUNT; ++i) {
+		m_threads.at(i).join();
+	}
 	
 	cout << "Routines Completed" << endl;
 
